@@ -1,0 +1,94 @@
+** start of undefined **
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Roman Numeral Converter</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Roman Numeral Converter</h1>
+      <label for="number">Enter a number to convert:</label><br />
+      <input id="number" type="number"></input><br />
+      <button id="convert-btn">Convert</button>
+      <div id="output"></div>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
+
+** end of undefined **
+
+** start of undefined **
+
+* {
+  text-align: center;
+  margin: 20px, auto;
+}
+
+div {
+  padding-top: 10px;
+  font-size: 24px;
+}
+
+** end of undefined **
+
+** start of undefined **
+
+// Variables from document
+const numberInput = document.getElementById("number");
+const convertBtn = document.getElementById("convert-btn");
+const output = document.getElementById("output");
+
+// OnClick Convert Btn
+convertBtn.addEventListener("click", () => {
+  if (numberInput.value === "") {
+    output.innerText = "Please enter a valid number";
+  } else if (numberInput.value <= 0) {
+    output.innerText = "Please enter a number greater than or equal to 1";
+  } else if (numberInput.value > 3999) {
+    output.innerText = "Please enter a number less than or equal to 3999";
+  } else {
+    output.innerText = convertNum(numberInput.value);
+  }
+});
+// NumeralConverting Function (convertNum)
+const convertNum = (input) => {
+  
+  // index of roman numeral values for the letters
+  const index = {
+    M: 1000,
+    CM: 900,
+    D: 500,
+    CD: 400,
+    C: 100,
+    XC: 90,
+    L: 50,
+    XL: 40,
+    X: 10,
+    IX: 9,
+    V: 5,
+    IV: 4,
+    I: 1
+  };
+  let str = "";
+
+  for (let i in index) {
+    /*
+    These are for testing
+    console.log("key:",i);
+    console.log("value:", index[i])
+    */
+    while (input >= index[i]) {
+      str += i;
+      input -= index[i];
+    }
+  };
+return str;
+};
+
+
+** end of undefined **
