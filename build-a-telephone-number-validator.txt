@@ -1,0 +1,80 @@
+** start of undefined **
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goal Tracker Application</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main>
+      <label for="user-input">Enter a US Telephone number: </label><br />
+      <input id="user-input" type="text" /><br />
+      
+      <button id="check-btn">Check</button>
+      <button id="clear-btn">Clear</button>
+      <div id="results-div">
+        
+      </div>
+    </main>
+  </body>
+  <script src="script.js"></script>
+</html>
+
+** end of undefined **
+
+** start of undefined **
+
+* {
+  text-align: center;
+  margin: 20px, auto;
+  
+}
+
+main {
+  padding-top: 15px;
+}
+
+div {
+  background-color: #d7d7d6;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+** end of undefined **
+
+** start of undefined **
+
+// DOM variables
+const userInput = document.getElementById("user-input");
+const checkBtn = document.getElementById("check-btn");
+const clearBtn = document.getElementById("clear-btn");
+const result = document.getElementById("results-div");
+
+// function to check telephone number
+
+const checkNum = (input) => {
+  const inputUpdate = input.replace(/[\s()-]/g, "")
+  const pattern = /^(?:1)?\d{3}\d{3}\d{4}$/gi;
+  return pattern.test(inputUpdate) ? result.innerHTML += `<p>Valid US number: ${input}</p>` : result.innerHTML += `<p>Invalid US number: ${input}</p>`
+};
+
+// event listeners for check and clear button
+checkBtn.addEventListener("click", () => {
+  if (userInput.value === "") {
+    alert("Please provide a phone number");
+    return;
+  }
+  checkNum(userInput.value);
+})
+
+clearBtn.addEventListener("click", () => {
+  result.innerHTML = "";
+})
+
+** end of undefined **
+
